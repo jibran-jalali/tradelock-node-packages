@@ -1,0 +1,11 @@
+**/node_modules/
+**/.next/
+**/.runtime/
+**/node/runtime/
+**/node/data/
+**/node/config/node.key
+**/node/config/node.json
+**/lib/network-connection.json
+**/installers/*.msi
+**/.env*
+**/*.tsbuildinfo

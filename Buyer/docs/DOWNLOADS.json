@@ -1,0 +1,15 @@
+{
+  "release": "https://github.com/jibran-jalali/tradelock-node-packages/releases/tag/v3.0.0",
+  "assets": [
+    {
+      "name": "TradeLock-Buyer.zip",
+      "url": "https://github.com/jibran-jalali/tradelock-node-packages/releases/download/v3.0.0/TradeLock-Buyer.zip",
+      "digest": "sha256:d7f1c19733151defae9ab8a67611ba41fabae3a94d9146878aa7745947399aa9"
+    },
+    {
+      "name": "TradeLock-Supplier.zip",
+      "url": "https://github.com/jibran-jalali/tradelock-node-packages/releases/download/v3.0.0/TradeLock-Supplier.zip",
+      "digest": "sha256:8eb30fad318240721f1bac27366d2c463e9496f66cd3f175a55b52aa652ef16e"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "networkId": "308f665835270140",
+  "networkToken": "USE_THE_PAIRED_PROFILE_FROM_THE_PRIVATE_RELEASE",
+  "genesisHash": "0x55f62220ee4e5d8af6bfc6e1db7abb5d8e6febbf1089d2bc2b1452a2ad6c23c6",
+  "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+  "validatorKeys": [
+    "3c031182e6d65b86a21b6f7cb90a0e9e1c5998b23e10095cbc5d8eab53250ef95e296d3caef68a7303f075cf1f8b6bdf315b7dcb75483e3e3adb774612cabbb9",
+    "4e62aae3c111bb931a57bad1dd75a9e411930e634855c9eb2a5eae2d36714eeafe06bf6071b66e64652e3622607bfffe6b00d84498aa9aac0eac8214bbb0ef88"
+  ],
+  "gateways": [
+    "http://127.0.0.1:9050"
+  ],
+  "localOnly": true
+}

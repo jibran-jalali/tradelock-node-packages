@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 2,
+  "receiptWindowSeconds": 36000,
+  "address": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+  "chainId": 31337,
+  "blockNumber": 11,
+  "blockHash": "0xb05099eaccbf70a5364cd60ced6eee307a394928652c8eb82c76947e8f3199f1",
+  "transactionHash": "0xab74a4e18de25a5c2060b20de7561c7812ff1ff7aea096f12ce263a5793f720c",
+  "abi": [
+    {
+      "type": "event",
+      "anonymous": false,
+      "name": "DisputeOpened",
+      "inputs": [
+        {
+          "type": "uint256",
+          "name": "tradeId",
+          "indexed": true
+        },
+        {
+          "type": "address",
+          "name": "buyer",
+          "indexed": true
+        },
+        {
+          "type": "string",
+          "name": "reason",
+          "indexed": false
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "anonymous": false,
+      "name": "ResolutionAccepted",
+      "inputs": [
+        {
+          "type": "uint256",
+          "name": "tradeId",
+          "indexed": true
+        },
+        {
+          "type": "address",
+          "name": "accepter",
+          "indexed": true
+        },
+        {
+          "type": "uint8",
+          "name": "resolution",
+          "indexed": false
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "anonymous": false,
+      "name": "ResolutionCancelled",
+      "inputs": [
+        {
+          "type": "uint256",
+          "name": "tradeId",
+          "indexed": true
+        },
+        {
+          "type": "address",
+          "name": "proposer",
+          "indexed": true
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "anonymous": false,
+      "name": "ResolutionProposed",
+      "inputs": [
+        {
+          "type": "uint256",
+          "name": "tradeId",
+          "indexed": true
+        },
+        {
+          "type": "address",
+          "name": "proposer",
+          "indexed": true
+        },
+        {
+          "type": "uint8",
+          "name": "resolution",
+          "indexed": false
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "anonymous": false,
+      "name": "TradeCreated",
+      "inputs": [
+        {
+          "type": "uint256",
+          "name": "tradeId",
+          "indexed": true
+        },
+        {
+          "type": "address",
+          "name": "buyer",
+          "indexed": true
+        },
+        {
+          "type": "address",
+          "name": "supplier",
+          "indexed": true
+        },
+        {
+          "type": "uint256",
+          "name": "amount",
+          "indexed": false
+        },
+        {
+          "type": "bytes32",
+          "name": "documentHash",
+          "indexed": false
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "anonymous": false,
+      "name": "TradePaid",
+      "inputs": [
+        {
+          "type": "uint256",
+          "name": "tradeId",
+          "indexed": true
+        },
+        {
+          "type": "address",
+          "name": "supplier",
+          "indexed": true
+        },
+        {
+          "type": "uint256",
+          "name": "amount",
+          "indexed": false
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "anonymous": false,
+      "name": "TradeRefunded",
+      "inputs": [
+        {
+          "type": "uint256",
+          "name": "tradeId",
+          "indexed": true
+        },
+        {
+          "type": "address",
+          "name": "buyer",
+          "indexed": true
+        },
+        {
+          "type": "uint256",
+          "name": "amount",
+          "indexed": false
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "anonymous": false,
+      "name": "TradeShipped",
+      "inputs": [
+        {
+          "type": "uint256",
+          "name": "tradeId",
+          "indexed": true
+        },
+        {
+          "type": "address",
+          "name": "supplier",
+          "indexed": true
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "RECEIPT_WINDOW",
+      "constant": true,
+      "stateMutability": "view",
+      "payable": false,
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "uint256",
+          "name": ""
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "acceptResolution",
+      "constant": false,
+      "payable": false,
+      "inputs": [
+        {
+          "type": "uint256",
+          "name": "id"
+        },
+        {
+          "type": "uint8",
+          "name": "expectedResolution"
+        },
+        {
+          "type": "address",
+          "name": "expectedProposer"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "type": "function",
+      "name": "cancelResolution",
+      "constant": false,
+      "payable": false,
+      "inputs": [
+        {
+          "type": "uint256",
+          "name": "id"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "type": "function",
+      "name": "claimPayment",
+      "constant": false,
+      "payable": false,
+      "inputs": [
+        {
+          "type": "uint256",
+          "name": "id"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "type": "function",
+      "name": "confirmReceipt",
+      "constant": false,
+      "payable": false,
+      "inputs": [
+        {
+          "type": "uint256",
+          "name": "id"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "type": "function",
+      "name": "createTrade",
+      "constant": false,
+      "stateMutability": "payable",
+      "payable": true,
+      "inputs": [
+        {
+          "type": "address",
+          "name": "supplier"
+        },
+        {
+          "type": "string",
+          "name": "description"
+        },
+        {
+          "type": "uint256",
+          "name": "quantity"
+        },
+        {
+          "type": "bytes32",
+          "name": "documentHash"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "uint256",
+          "name": "id"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getTrade",
+      "constant": true,
+      "stateMutability": "view",
+      "payable": false,
+      "inputs": [
+        {
+          "type": "uint256",
+          "name": "id"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "tuple",
+          "name": "",
+          "components": [
+            {
+              "type": "address",
+              "name": "buyer"
+            },
+            {
+              "type": "address",
+              "name": "supplier"
+            },
+            {
+              "type": "string",
+              "name": "description"
+            },
+            {
+              "type": "uint256",
+              "name": "quantity"
+            },
+            {
+              "type": "uint256",
+              "name": "amount"
+            },
+            {
+              "type": "bytes32",
+              "name": "documentHash"
+            },
+            {
+              "type": "uint8",
+              "name": "status"
+            },
+            {
+              "type": "uint256",
+              "name": "createdAt"
+            },
+            {
+              "type": "uint256",
+              "name": "shippedAt"
+            },
+            {
+              "type": "uint256",
+              "name": "releaseDeadline"
+            },
+            {
+              "type": "string",
+              "name": "disputeReason"
+            },
+            {
+              "type": "uint8",
+              "name": "proposedResolution"
+            },
+            {
+              "type": "address",
+              "name": "resolutionProposer"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "markShipped",
+      "constant": false,
+      "payable": false,
+      "inputs": [
+        {
+          "type": "uint256",
+          "name": "id"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "type": "function",
+      "name": "proposeResolution",
+      "constant": false,
+      "payable": false,
+      "inputs": [
+        {
+          "type": "uint256",
+          "name": "id"
+        },
+        {
+          "type": "uint8",
+          "name": "resolution"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "type": "function",
+      "name": "raiseDispute",
+      "constant": false,
+      "payable": false,
+      "inputs": [
+        {
+          "type": "uint256",
+          "name": "id"
+        },
+        {
+          "type": "string",
+          "name": "reason"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "type": "function",
+      "name": "totalLocked",
+      "constant": true,
+      "stateMutability": "view",
+      "payable": false,
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "uint256",
+          "name": ""
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "tradeCount",
+      "constant": true,
+      "stateMutability": "view",
+      "payable": false,
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "uint256",
+          "name": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "fullyExtractedBuyer": true,
+  "fullyExtractedSupplier": true,
+  "bundledRuntimesUsed": true,
+  "roleRoutesCorrect": true,
+  "oppositeRolesRejected": true,
+  "automaticColdDeployment": true,
+  "coldDeploymentBlock": 2,
+  "matchingBlockHash": "0x9497419f6d86b04a736b200b1c48e9d54662e36a4bd5b7cbf1d2dcefb2c6c438",
+  "consensusSeals": 2,
+  "localTwoProcessTest": true,
+  "realCrossNetworkFriendNotYetVerified": true
+}

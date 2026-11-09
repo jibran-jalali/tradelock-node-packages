@@ -1,0 +1,6 @@
+{
+  "singleNodeBlocksWrites": true,
+  "bothNodesNoFallback": true,
+  "reconnected": true,
+  "localTwoProcessTest": true
+}

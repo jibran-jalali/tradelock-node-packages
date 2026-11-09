@@ -1,0 +1,10 @@
+﻿{
+    "besuVersion":  "26.11.0",
+    "besuUrl":  "https://github.com/besu-eth/besu/releases/download/26.11.0/besu-26.11.0.zip",
+    "besuSha256":  "a3c947c33afc7eb7e1c1688c7122334d6258bfdca0fec64fedbe0d007b5978d1",
+    "javaVersion":  "25.0.5+8.0.LTS",
+    "javaUrl":  "https://github.com/adoptium/temurin25-binaries/releases/download/jdk-25.0.5%2B8/OpenJDK25U-jre_x64_windows_hotspot_25.0.5_8.zip",
+    "javaSha256":  "da78d54a2fcdbba1e92d5e3f07dd30236f96297891c4a21a781c3f38f5c0beae",
+    "nodeVersion":  "24.11.1",
+    "nodeSha256":  "f13ac3ca23248dc389507e8fe38c34489ab7edb3e6d6700eb6da6a0b7e128eaf"
+}

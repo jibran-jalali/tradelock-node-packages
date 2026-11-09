@@ -1,0 +1,21 @@
+TRADELOCK BUYER
+
+1. Extract this entire folder. Keep node_modules and node/runtime included.
+2. Double-click START.bat. First use may ask Windows permission for Tailscale
+   installation and two narrow firewall rules for the paired VPN network.
+3. Sign in to Tailscale. Buyer invites Supplier to the SAME private tailnet:
+   https://login.tailscale.com/admin/users
+   Supplier accepts that invite using their own account. Do not share passwords.
+4. The browser opens YOUR buyer dashboard. The terminal shows real node activity.
+5. When both devices are connected, it shows NETWORK READY. No IP editing needed.
+
+The two devices can use different internet connections. Tailscale supplies
+connectivity; both blockchain nodes and websites run on your own devices.
+After this one-time setup, just run START.bat on each device. All TradeLock
+runtimes/dependencies are bundled; only VPN connectivity needs internet.
+Keep the terminal open. Ctrl+C stops this device cleanly. Re-running START.bat
+reuses an already running copy. Keep node/data/node/ between runs.
+Both validators are required to confirm transactions. With either absent,
+the UI waits; it never creates a separate Hardhat chain or fake balances.
+This package has only its own validator key. Never run duplicate copies.
+Development wallets use public test keys; never use real cryptocurrency.

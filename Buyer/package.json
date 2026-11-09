@@ -1,0 +1,39 @@
+{
+    "name":  "tradelock",
+    "version":  "1.0.0",
+    "private":  true,
+    "type":  "module",
+    "engines":  {
+                    "node":  "\u003e=24.0.0"
+                },
+    "scripts":  {
+                    "local":  "node scripts/start-web.mjs",
+                    "web":  "node scripts/start-web.mjs",
+                    "node":  "node scripts/start-host-node.mjs",
+                    "legacy:local":  "node scripts/start-local.mjs",
+                    "settle":  "node scripts/settlement-worker.mjs",
+                    "chain":  "hardhat node --hostname 127.0.0.1",
+                    "compile":  "hardhat compile",
+                    "test":  "hardhat compile \u0026\u0026 node --test --test-concurrency=1 test/*.test.mjs",
+                    "deploy":  "hardhat run scripts/deploy.ts --network localhost",
+                    "smoke":  "node scripts/smoke.mjs",
+                    "dev":  "next dev --hostname localhost",
+                    "build":  "next typegen \u0026\u0026 tsc --noEmit \u0026\u0026 next build --webpack \u0026\u0026 node scripts/clean-website-traces.mjs",
+                    "start":  "next start --hostname localhost",
+                    "typecheck":  "tsc --noEmit"
+                },
+    "dependencies":  {
+                         "ethers":  "6.17.0",
+                         "next":  "16.4.5",
+                         "react":  "19.3.1",
+                         "react-dom":  "19.3.1"
+                     },
+    "devDependencies":  {
+                            "@nomicfoundation/hardhat-ethers":  "4.2.2",
+                            "@types/node":  "24.10.1",
+                            "@types/react":  "19.3.0",
+                            "@types/react-dom":  "19.2.3",
+                            "hardhat":  "3.21.2",
+                            "typescript":  "5.9.3"
+                        }
+}

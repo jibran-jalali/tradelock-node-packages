@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "tradeId": 3,
+  "amountWei": "20000000000000000",
+  "state": "Paid",
+  "sameBlockHash": "0xc666159ee8a5c9599b6ec030fa910caac2cdde599744a53c39c037f6051973fe",
+  "consensusSeals": 2,
+  "zeroEscrowRemaining": true,
+  "localTwoProcessTest": true
+}

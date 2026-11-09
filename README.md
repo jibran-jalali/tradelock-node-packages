@@ -30,3 +30,13 @@ Keep node/data/node on each laptop. Each package contains only its own validator
 52 tests, TypeScript/production build, role-specific routes, a real browser escrow payment through two packaged apps/nodes, matching ledgers and two commit seals, quorum-loss checks, restart/reconnection, repeated-start reuse, ZIP integrity, and fresh-extraction checks were verified locally. Buyer Tailscale installation/sign-in was verified. Two physical laptops on different networks still require the friend to run Supplier and join the same tailnet.
 
 The repository is private because these packages contain the paired development validator identities. Download Supplier and forward that file, or grant repository access separately. Use v3; earlier releases remain backups of previous layouts.
+
+## Repository source and runnable packages
+
+The Buyer/ and Supplier/ folders in this repository contain reviewable source code. Installed dependencies, runtimes, private validator keys, pairing secrets and blockchain databases are excluded from Git. Redacted configuration examples are included. To RUN the applications, use the fully bundled release downloads above rather than GitHub's automatic source-code ZIP.
+
+## Does the friend need the same Tailscale account?
+
+No. Each person uses their own account. Buyer invites Supplier through https://login.tailscale.com/admin/users . Supplier accepts and selects the BUYER'S tailnet in Tailscale, rather than an unrelated personal tailnet. Do not share passwords or authentication keys.
+
+On the other laptop: close old TradeLock launchers, transfer/extract the complete Supplier folder, run START.bat, approve Windows setup if requested, and sign in to the invited network. Run Buyer/START.bat on your laptop. Keep both terminals open and wait for NETWORK READY. Node identity, contract registration, peer connection and the role-specific website are handled automatically.

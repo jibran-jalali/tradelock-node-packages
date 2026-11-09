@@ -1,0 +1,6 @@
+TRADELOCK | COMMERCIAL INVOICE
+Invoice: TL-2026-001
+Item: Cotton shirts
+Quantity: 20
+Payment: 1 test ETH
+Terms: Payment released after buyer confirms receipt.
