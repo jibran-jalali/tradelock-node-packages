@@ -1,35 +1,32 @@
 # TradeLock
 
-The website and the blockchain are now separate.
+Two self-contained folders for two Windows x64 devices:
 
-| Package | Use |
-| --- | --- |
-| [TradeLock-Host.zip](https://github.com/jibran-jalali/tradelock-node-packages/releases/download/v2.0.0/TradeLock-Host.zip) | Your node and paired website, with separate launchers |
-| [TradeLock-Friend.zip](https://github.com/jibran-jalali/tradelock-node-packages/releases/download/v2.0.0/TradeLock-Friend.zip) | Node B only; send this to your friend |
+| Download | Device | Start |
+| --- | --- | --- |
+| [TradeLock-Buyer.zip](https://github.com/jibran-jalali/tradelock-node-packages/releases/download/v3.0.0/TradeLock-Buyer.zip) | Your laptop | Buyer/START.bat |
+| [TradeLock-Supplier.zip](https://github.com/jibran-jalali/tradelock-node-packages/releases/download/v3.0.0/TradeLock-Supplier.zip) | Your friend's laptop | Supplier/START.bat |
 
-1. Run **Start Node.cmd** on your laptop.
-2. Your friend extracts the new v2 friend ZIP and runs **RUN.bat**.
-3. Wait for **NETWORK READY** on both 90s-style terminal panels.
-4. Start the separate website with **Start TradeLock.cmd**. It automatically discovers the running shared network.
+Extract the entire ZIP. Each launcher starts a blockchain validator, its own role-specific website, and a live terminal showing actual VPN/node/peer/block activity. No separate website startup or role chooser is required.
 
-Node panels: http://127.0.0.1:9050 on each laptop. Website: http://localhost:3000 wherever its server runs.
+## One-time network setup
 
-The website can run on another reachable computer using its paired files and Node.js 24. It does not start Hardhat, a validator, or another deployment. One available node can serve reads; new transactions require both validators. If no nodes are reachable, the website waits and reconnects.
+Tailscale is bundled. Windows may ask for installation/firewall approval. Each person signs in using their own account. Buyer invites Supplier through https://login.tailscale.com/admin/users ; Supplier accepts and joins the same private network. No passwords or authentication keys need sharing.
 
-The host node owns automatic contract registration and the ten-hour deadline worker. Website shutdown does not stop the blockchain. A timely dispute freezes payment on-chain until both parties agree on payment or refund. A file hash detects altered contents, not truthfulness.
+After that, each person runs START.bat. Their browser opens the correct dashboard at http://127.0.0.1:3000. Wait for NETWORK READY and keep both terminals open. Repeated starts reuse an existing instance and attach a live monitor.
 
-## First use
+All TradeLock runtimes and dependencies are included. Tailscale connectivity needs internet. Blockchain execution, websites and document hashing stay local. The nodes find their expected counterpart using Tailscale's online peer addresses and pinned blockchain identity.
 
-The compact packages download and verify missing Node.js, Java, and Besu runtimes locally. This needs internet once. Reuse an existing v1 runtime folder to avoid downloads. The host website installs pinned npm dependencies if needed. No system Java installation, paid API, real currency, or Docker is required.
+## Blockchain and trade rules
 
-Both laptops need the same trusted LAN or a separately configured private VPN. Discovery does not cross arbitrary internet networks. Allow Node/Java on Private networks if Windows asks. The initial host address is 192.168.18.2; the friend panel can update it. For routed private networks, the website supports TRADELOCK_NODE_URLS.
+Two Besu validators use Ethereum-compatible QBFT Proof of Authority. Both must be online to commit blocks; the network has no spare-validator or Byzantine fault tolerance. The UI waits without quorum and never starts a replacement Hardhat chain or simulated balance.
 
-## Consensus and checks
+Buyer funds the trade, Supplier marks it shipped, and Buyer confirms receipt to pay. A dispute within ten hours freezes automatic payment until agreement. The Buyer node submits eligible timeout payments independently of the browser. Shipment is a supplier claim. SHA-256 verifies unchanged file contents, not truthfulness.
 
-Two real Besu validators use QBFT Proof of Authority. Both must stay online; the two-validator network has no spare-validator or Byzantine fault tolerance. Actual peers, blocks, synchronization, and transactions drive the panel.
+Keep node/data/node on each laptop. Each package contains only its own validator private key. Do not run duplicate copies. Development wallet keys are public and must never hold real funds. Distribution ZIPs are clean starters; the original Buyer's blockchain history remains preserved on the laptop.
 
-Verified locally: 47 tests, TypeScript/production build, a full browser escrow payment on the shared chain, two commit seals, matching ledgers, automatic discovery, read failover, and no-node waiting without switching to Hardhat. The physical friend laptop and its network still require verification.
+## Verification
 
-Only one copy of each validator identity may run. Keep the host package to yourself and send only the friend ZIP. This repository is private: download the friend file and forward it, or give your friend repository access separately. Never use development keys for real funds.
+52 tests, TypeScript/production build, role-specific routes, a real browser escrow payment through two packaged apps/nodes, matching ledgers and two commit seals, quorum-loss checks, restart/reconnection, repeated-start reuse, ZIP integrity, and fresh-extraction checks were verified locally. Buyer Tailscale installation/sign-in was verified. Two physical laptops on different networks still require the friend to run Supplier and join the same tailnet.
 
-The previous v1 release remains a backup. Use v2 for the new gateway/discovery protocol and terminal UI. The original laptop data was preserved.
+The repository is private because these packages contain the paired development validator identities. Download Supplier and forward that file, or grant repository access separately. Use v3; earlier releases remain backups of previous layouts.
