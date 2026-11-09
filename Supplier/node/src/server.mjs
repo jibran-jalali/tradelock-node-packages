@@ -173,4 +173,3 @@ server.listen(config.controlPort,'0.0.0.0',async()=>{writeFileSync(join(data,'co
 server.on('error',e=>{console.error(e.message);process.exitCode=1;discovery.close()});
 async function shutdown(){await stopNode();provider.destroy();try{discovery.close()}catch{}server.close();process.exit(0)}
 process.on('SIGINT',shutdown);process.on('SIGTERM',shutdown);
-
