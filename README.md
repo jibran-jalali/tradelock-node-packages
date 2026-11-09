@@ -1,44 +1,35 @@
 # TradeLock
 
-Two Windows packages for the same two-validator network.
+The website and the blockchain are now separate.
 
-| Download | Who uses it | Start |
-| --- | --- | --- |
-| [TradeLock-Host.zip](https://github.com/jibran-jalali/tradelock-node-packages/releases/download/v1.0.0/TradeLock-Host.zip) | Your laptop only | Extract everything, then run **START HOST.bat** |
-| [TradeLock-Friend.zip](https://github.com/jibran-jalali/tradelock-node-packages/releases/download/v1.0.0/TradeLock-Friend.zip) | Send this ZIP to your friend | Extract everything, then run **RUN.bat** or **Start Friend Node.bat** |
+| Package | Use |
+| --- | --- |
+| [TradeLock-Host.zip](https://github.com/jibran-jalali/tradelock-node-packages/releases/download/v2.0.0/TradeLock-Host.zip) | Your node and paired website, with separate launchers |
+| [TradeLock-Friend.zip](https://github.com/jibran-jalali/tradelock-node-packages/releases/download/v2.0.0/TradeLock-Friend.zip) | Node B only; send this to your friend |
 
-Open [the release](https://github.com/jibran-jalali/tradelock-node-packages/releases/tag/v1.0.0) for both downloads and SHA-256 checksums. GitHub also generates source archives; those contain this README, not the runnable software. Download the two explicitly named packages above.
+1. Run **Start Node.cmd** on your laptop.
+2. Your friend extracts the new v2 friend ZIP and runs **RUN.bat**.
+3. Wait for **NETWORK READY** on both 90s-style terminal panels.
+4. Start the separate website with **Start TradeLock.cmd**. It automatically discovers the running shared network.
 
-## Connect
+Node panels: http://127.0.0.1:9050 on each laptop. Website: http://localhost:3000 wherever its server runs.
 
-1. Keep your existing host installation running, or use the extracted host package. Run only one copy of the host identity.
-2. Both laptops currently need the same trusted private Wi-Fi/LAN. Different networks need additional VPN configuration, which is not included.
-3. Your friend starts their extracted package and keeps its window open. Allow Java/Node on Private networks if Windows asks.
-4. Each laptop opens its own control panel at **http://127.0.0.1:9050**. The host website is **http://localhost:3000**.
-5. Both panels should show two nodes online, a connected peer, and advancing blocks after synchronization. The host can connect TradeLock to this chain once both validators are ready.
+The website can run on another reachable computer using its paired files and Node.js 24. It does not start Hardhat, a validator, or another deployment. One available node can serve reads; new transactions require both validators. If no nodes are reachable, the website waits and reconnects.
 
-The friend profile initially points to **192.168.18.2**. If your host address changes, update it in the friend's panel and reconnect. Guest Wi-Fi may block device-to-device traffic. If connected peers wait after a long disconnection, stop and start both nodes from their panels.
+The host node owns automatic contract registration and the ten-hour deadline worker. Website shutdown does not stop the blockchain. A timely dispute freezes payment on-chain until both parties agree on payment or refund. A file hash detects altered contents, not truthfulness.
 
-## Included
+## First use
 
-The host ZIP includes the website source, installed dependencies, frontend build, Solidity artifacts, launcher, and bundled Node/npm, Java, and Besu. The friend ZIP includes its node and control panel with bundled runtimes; no separate Node or Java installation is needed. **SETUP.bat** in the friend package checks or restores missing runtimes.
+The compact packages download and verify missing Node.js, Java, and Besu runtimes locally. This needs internet once. Reuse an existing v1 runtime folder to avoid downloads. The host website installs pinned npm dependencies if needed. No system Java installation, paid API, real currency, or Docker is required.
 
-These are clean runnable packages. Live databases, transaction history, logs, private environment files, and process IDs are excluded. The original laptop installation and history are preserved separately. The two ZIPs have different validator keys. **Keep the host ZIP to yourself and send only the friend ZIP.** Never use development keys for real funds.
+Both laptops need the same trusted LAN or a separately configured private VPN. Discovery does not cross arbitrary internet networks. Allow Node/Java on Private networks if Windows asks. The initial host address is 192.168.18.2; the friend panel can update it. For routed private networks, the website supports TRADELOCK_NODE_URLS.
 
-## How it works
+## Consensus and checks
 
-Two real Besu nodes maintain separate Ethereum-compatible databases and approve QBFT blocks. Both validators are required: this network has no spare-validator or Byzantine fault tolerance. It does not perform proof-of-work mining. The panels report actual RPC, peer, synchronization, and block data.
+Two real Besu validators use QBFT Proof of Authority. Both must stay online; the two-validator network has no spare-validator or Byzantine fault tolerance. Actual peers, blocks, synchronization, and transactions drive the panel.
 
-The website starts with Hardhat available and can switch to the separate two-node chain. Settle escrow before switching: balances and trade history do not migrate between ledgers. Blockchain validation is distributed across the two laptops; the website remains hosted on your laptop.
+Verified locally: 47 tests, TypeScript/production build, a full browser escrow payment on the shared chain, two commit seals, matching ledgers, automatic discovery, read failover, and no-node waiting without switching to Hardhat. The physical friend laptop and its network still require verification.
 
-## Verified
+Only one copy of each validator identity may run. Keep the host package to yourself and send only the friend ZIP. This repository is private: download the friend file and forward it, or give your friend repository access separately. Never use development keys for real funds.
 
-- 41 contract tests and the production frontend build passed.
-- A full escrow trade and payment completed on two real validator processes.
-- Both nodes returned matching contract code, paid trade data, and a block with two QBFT commit seals.
-- Stopping one validator stopped new blocks during the observation interval.
-- A freshly extracted friend package synchronized the chain and read the paid trade.
-
-These checks used two processes on one physical laptop. The friend's actual laptop, Wi-Fi, firewall, and browser opening still require verification.
-
-The repository is private because the downloads contain the paired development validator identities. Your friend needs repository access to download directly from GitHub; alternatively, download the friend ZIP yourself and send that file.
+The previous v1 release remains a backup. Use v2 for the new gateway/discovery protocol and terminal UI. The original laptop data was preserved.
